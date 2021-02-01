@@ -1,15 +1,43 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import React from 'react';
+import * as Survey from 'survey-react';
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+const Index = () => {
+  let json = {
+    questions: [
+      {
+        type: 'checkbox',
+        name: 'car',
+        title: 'What car are you driving?',
+        isRequired: true,
+        hasSelectAll: true,
+        hasNone: true,
+        noneText: 'None of the above',
+        colCount: 4,
+        choicesOrder: 'asc',
+        choices: [
+          'Ford',
+          'Tesla',
+          'Vauxhall',
+          'Volkswagen',
+          'Nissan',
+          'Audi',
+          'Mercedes-Benz',
+          'BMW',
+          'Peugeot',
+          'Toyota',
+          'Citroen',
+        ],
+      },
+    ],
+  };
+  var surveyRender = <Survey.Survey json={json} />;
+  return (
+    <div className='App'>
+      <h1>SurveyJS react example</h1>
+      <h2>Checkbox - none of the above and select all</h2>
+      {surveyRender}
+    </div>
+  );
+};
 
-export default IndexPage
+export default Index;
