@@ -1,7 +1,7 @@
 const data = {
-  id: 'some id',
+  id: 'some hashed id',
   title: 'title',
-  description: 'some description',
+  description: 'some',
   questions: [
     {
       type: 'text',
@@ -9,33 +9,18 @@ const data = {
       title: 'Your name:',
     },
     {
-      type: 'text',
-      name: 'email',
-      title: 'Your e-mail',
-    },
-    {
       type: 'checkbox',
       name: 'food',
       title: 'What is your favorite food?',
       isRequired: true,
-      hasSelectAll: true,
-      hasNone: true,
-      noneText: 'None of the above',
-      colCount: 4,
-      choicesOrder: 'asc',
       choices: ['apple', 'orange'],
     },
     {
-      type: 'checkbox',
-      name: 'car',
-      title: 'What car are you driving?',
+      type: 'radio',
+      name: 'gender',
+      title: 'title',
       isRequired: true,
-      hasSelectAll: true,
-      hasNone: true,
-      noneText: 'None of the above',
-      colCount: 4,
-      choicesOrder: 'asc',
-      choices: ['Ford', 'Tesla'],
+      choices: ['male', 'female'],
     },
   ],
 };
