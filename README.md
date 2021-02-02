@@ -30,6 +30,55 @@
 
 
 
+## json
+
+* とりあえず入力フォームのjson定義
+* id,titleは必須,descriptionは任意
+* questionsに関して今はtext,checkbox,radioのみ許容
+* 書いてある要素に関して全て必須
+
+```json
+  {
+    "id" : "some hashed id",
+    "title" : "title", 
+    "description" :"some",
+    "questions": [
+      {
+        "type": "text",
+        "name": "name",
+        "title": "Your name:"
+      },
+      {
+        "type": "checkbox",
+        "name": "food",
+        "title": "What is your favorite food?",
+        "isRequired": true,
+        "choices": ["apple", "orange"]
+      },
+      {
+      	"type": "radio",
+      	"name": "gender",
+        "title": "title",
+        "isRequired": true,
+        "choices": ["male", "female"]
+      }
+    ]
+  }
+
+```
+
+
+
+## ルーティング
+
+| name      | 詳細                       |
+| --------- | -------------------------- |
+| /         | ランディングページ         |
+| /form/:id | そのformの回答ページ       |
+| /index    | 回答可能アンケート一覧表示 |
+
+
+
 ## Todo
 
 * [ ] jsonからフォームを作る仕組みを定義 とりあえず最初はチェックボックスにのみ対応で様子見
