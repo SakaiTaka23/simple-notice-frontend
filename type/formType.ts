@@ -7,12 +7,13 @@ type formData = {
 
 type question =
   | {
-      type: string;
+      type: 'text';
       name: string;
       title: string;
+      isRequired: boolean;
     }
   | {
-      type: string;
+      type: 'checkbox' | 'radio';
       name: string;
       title: string;
       isRequired: boolean;
