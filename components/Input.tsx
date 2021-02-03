@@ -12,7 +12,6 @@ const Input: FC<Prop> = ({ question }) => {
   if (question.type === 'text') {
     return (
       <>
-        <h2>{question.title}</h2>
         <input type={question.type} name={question.name} ref={register({ required: question.isRequired })} />
       </>
     );
@@ -20,7 +19,6 @@ const Input: FC<Prop> = ({ question }) => {
   if (question.type === 'checkbox' || question.type === 'radio') {
     return (
       <>
-        <h2>{question.title}</h2>
         {question.choices.map((choice, index) => {
           return (
             <div key={index}>

@@ -9,6 +9,7 @@ type Prop = {
 
 const Questions: FC<Prop> = ({ questions }) => {
   const methods = useForm();
+  // apiを叩いてデータ送信
   const onSubmit = (data: any) => console.log(data);
 
   return (
@@ -17,6 +18,7 @@ const Questions: FC<Prop> = ({ questions }) => {
         {questions.map((question, index) => {
           return (
             <div key={index}>
+              <h2>{question.title}</h2>
               <Input question={question} />
             </div>
           );
