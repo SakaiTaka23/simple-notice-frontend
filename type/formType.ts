@@ -10,18 +10,13 @@ type question =
       type: 'text';
       name: string;
       title: string;
-      isRequired: boolean;
+      is_required: boolean;
     }
   | {
       type: 'checkbox' | 'radio';
       name: string;
       title: string;
-      isRequired: boolean;
-      hasSelectAll: boolean;
-      hasNone: boolean;
-      noneText: string;
-      colCount: number;
-      choicesOrder: string;
+      is_required: boolean;
       choices: string[];
     };
 

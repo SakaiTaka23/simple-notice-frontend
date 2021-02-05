@@ -11,12 +11,14 @@ const form = () => {
   const onSubmit = (data: any) => console.log(data);
 
   console.log(watch('example'));
+  const exampleRequired = 'exampleRequired';
+  const isRequired = true;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input name='example' defaultValue='test' ref={register} />
-      {/* <input name='exampleRequired' ref={register({ required: true })} />
-      {errors.exampleRequired && <span>This field is required</span>} */}
+      <input name={exampleRequired} ref={register({ required: isRequired })} />
+      {errors.exampleRequired && <span>This field is required</span>}
       <select name='gender' ref={register}>
         <option value='male'>male</option>
         <option value='female'>female</option>
