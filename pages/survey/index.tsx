@@ -22,8 +22,8 @@ const Index = () => {
       {surveys.map((survey, index) => {
         return (
           <div key={index}>
-            <h1>{survey.owner}</h1>
-            <h2>{survey.from}</h2>
+            <h1>title : {survey.title}</h1>
+            <h2>description : {survey.description}</h2>
           </div>
         );
       })}
