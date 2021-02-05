@@ -11,6 +11,7 @@ const Questions: FC<Prop> = ({ questions }) => {
   const methods = useForm();
   // apiを叩いてデータ送信
   const onSubmit = (data: any) => console.log(data);
+  console.log(questions);
 
   return (
     <FormProvider {...methods}>
