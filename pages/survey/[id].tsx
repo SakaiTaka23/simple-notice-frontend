@@ -1,9 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
+import axios from 'axios';
 import { useRouter } from 'next/router';
 import { formData } from '../../type/formType';
 import Questions from '../../components/Questions';
-
-const url = 'http://127.0.0.1/api/survey/';
 
 const Form: FC = () => {
   const [surveyData, setSurveyData] = useState<formData>({
@@ -17,8 +16,9 @@ const Form: FC = () => {
   const { id } = router.query;
 
   const fetchSurveyData = async () => {
-    const response = await fetch(url + id);
-    const newSurveyData = await response.json();
+    const url = `http://127.0.0.1/api/survey/${id}`;
+    const response = await axios.get(url);
+    const newSurveyData = response.data;
     setSurveyData(newSurveyData[0]);
   };
 
