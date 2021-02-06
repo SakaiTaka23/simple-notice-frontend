@@ -33,6 +33,7 @@
 ## json
 
 * とりあえず入力フォームのjson定義
+* アンケートの表示のためのjson data
 * id,titleは必須,descriptionは任意
 * questionsに関して今はtext,checkbox,radioのみ許容
 * 書いてある要素に関して全て必須
@@ -45,19 +46,17 @@
     "questions": [
       {
         "type": "text",
-        "name": "name",
-        "title": "Your name:"
+        "title": "Your name:",
+        "isRequired": true,
       },
       {
         "type": "checkbox",
-        "name": "food",
         "title": "What is your favorite food?",
         "isRequired": true,
         "choices": ["apple", "orange"]
       },
       {
       	"type": "radio",
-      	"name": "gender",
         "title": "title",
         "isRequired": true,
         "choices": ["male", "female"]
@@ -66,6 +65,25 @@
   }
 
 ```
+
+
+
+* アンケート回答のためのPOSTするjson例
+
+```json
+{
+  1: "a",
+  2: [
+    "b",
+    "d"
+  ], 
+  3: "b", 
+  4: "d", 
+  5: "e"
+}
+```
+
+
 
 
 

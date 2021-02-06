@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { question } from '../type/formType';
@@ -10,7 +11,15 @@ type Prop = {
 const Questions: FC<Prop> = ({ questions }) => {
   const methods = useForm();
   // apiを叩いてデータ送信
-  const onSubmit = (data: any) => console.log(data);
+  const submitData = async (data: any) => {
+    const url = 'http://127.0.0.1/api/survey';
+    await axios.post(url, data);
+  };
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+    submitData(data);
+  };
 
   return (
     <FormProvider {...methods}>
