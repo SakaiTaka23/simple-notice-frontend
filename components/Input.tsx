@@ -8,13 +8,13 @@ type Prop = {
 
 const Input: FC<Prop> = ({ question }) => {
   const { register } = useFormContext();
-  const { name, type, is_required } = question;
+  const { question_number, type, is_required } = question;
 
   if (question.type === 'text') {
     return (
       <>
-        <div>デバッグ用 : {name}</div>
-        <input type={type} name={name} ref={register({ required: is_required })} />
+        <div>デバッグ用 : {question_number}</div>
+        <input type={type} name={question_number.toString()} ref={register({ required: is_required })} />
       </>
     );
   }
@@ -22,11 +22,16 @@ const Input: FC<Prop> = ({ question }) => {
   if (question.type === 'checkbox' || question.type === 'radio') {
     return (
       <>
-        <div>デバッグ用 : {name}</div>
+        <div>デバッグ用 : {question_number}</div>
         {question.choices.map((choice, index) => {
           return (
             <div key={index}>
-              <input type={type} name={name} value={choice} ref={register({ required: is_required })} />
+              <input
+                type={type}
+                name={question_number.toString()}
+                value={choice}
+                ref={register({ required: is_required })}
+              />
               {choice}
             </div>
           );

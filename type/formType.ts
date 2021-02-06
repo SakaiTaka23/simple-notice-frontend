@@ -8,13 +8,13 @@ type formData = {
 type question =
   | {
       type: 'text';
-      name: string;
+      question_number: number;
       title: string;
       is_required: boolean;
     }
   | {
       type: 'checkbox' | 'radio';
-      name: string;
+      question_number: number;
       title: string;
       is_required: boolean;
       choices: string[];
