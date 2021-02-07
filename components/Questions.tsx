@@ -5,15 +5,17 @@ import { question } from '../type/formType';
 import Input from './Input';
 
 type Prop = {
+  id: string | string[];
   questions: question[];
 };
 
-const Questions: FC<Prop> = ({ questions }) => {
+const Questions: FC<Prop> = ({ id, questions }) => {
   const methods = useForm();
   // apiを叩いてデータ送信
   const submitData = async (data: any) => {
-    const url = 'http://127.0.0.1/api/survey';
-    await axios.post(url, data);
+    const url = `http://127.0.0.1/api/survey/${id}`;
+    const response = await axios.post(url, data, { headers: { 'Content-Type': 'application/json' } });
+    console.log(response);
   };
 
   const onSubmit = (data: any) => {
