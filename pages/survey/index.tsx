@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 import { Surveys } from '../../type/api/surveyTypes';
 
 const Index = () => {
@@ -21,10 +22,12 @@ const Index = () => {
       Available Questions
       {surveys.map((survey, index) => {
         return (
-          <div key={index}>
-            <h1>title : {survey.title}</h1>
-            <h2>description : {survey.description}</h2>
-          </div>
+          <Link key={index} href={`/survey/${survey.id}`}>
+            <a>
+              <h1>title : {survey.title}</h1>
+              <h2>description : {survey.description}</h2>
+            </a>
+          </Link>
         );
       })}
     </>
