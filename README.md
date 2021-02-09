@@ -13,8 +13,6 @@
 * もうちょっとオリジナリティを出したい
 * react版バグっている気がする
 
-
-
 ## react-hook-form
 
 * 作成したformの情報を簡単に取得できるようにする
@@ -85,6 +83,25 @@
 ```
 
 
+
+## Chart.js
+
+```tsx
+const data = {
+  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fir', 'Sat', 'Sun'],
+  datasets: [
+    {
+      label: 'Demo line plot',
+      backgroundColor: '#008080',
+      borderColor: '#7fffd4',
+      pointBorderWidth: 10,
+      data: [5, 6, 9, 15, 30, 40, 80],
+    },
+  ],
+};
+```
+
+* このデータを入れる先さえコントロールすれば表示形式も変えることができる
 
 
 
