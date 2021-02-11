@@ -2,16 +2,12 @@ import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import NestedArray from './NestedFieldArray';
 
-let renderCount = 0;
-
 const FieldArray: React.FC = () => {
   const { control, register, getValues, setValue } = useFormContext();
   const { fields, append, remove, prepend } = useFieldArray({
     control,
-    name: 'test',
+    name: 'questions',
   });
-
-  renderCount++;
 
   return (
     <>
@@ -19,7 +15,12 @@ const FieldArray: React.FC = () => {
         {fields.map((item, index) => {
           return (
             <li key={item.id}>
-              <input name={`test[${index}].name`} ref={register()} defaultValue={item.name} />
+              <input name={`questions[${index}].title`} ref={register()} defaultValue={item.title} />
+              <select name={`questions[${index}].type`} ref={register()} defaultValue={item.type}>
+                <option value='text'>text</option>
+                <option value='check'>check</option>
+                <option value='radio'>radio</option>
+              </select>
 
               <button type='button' onClick={() => remove(index)}>
                 Delete
@@ -43,11 +44,11 @@ const FieldArray: React.FC = () => {
         <button
           type='button'
           onClick={() => {
-            setValue('test', [
-              ...getValues().test,
+            setValue('questions', [
+              ...getValues().questions,
               {
                 name: 'append',
-                nestedArray: [{ field1: 'append', field2: 'append' }],
+                nestedArray: [{ choice: 'choice append' }],
               },
             ]);
           }}
@@ -58,7 +59,7 @@ const FieldArray: React.FC = () => {
         <button
           type='button'
           onClick={() => {
-            prepend({ name: 'append' });
+            prepend({ title: 'title append' });
           }}
         >
           prepend
@@ -67,20 +68,18 @@ const FieldArray: React.FC = () => {
         <button
           type='button'
           onClick={() => {
-            setValue('test', [
+            setValue('questions', [
               {
                 name: 'append',
-                nestedArray: [{ field1: 'Prepend', field2: 'Prepend' }],
+                nestedArray: [{ choice: 'append' }],
               },
-              ...getValues().test,
+              ...getValues().questions,
             ]);
           }}
         >
           prepend Nested
         </button>
       </section>
-
-      <span className='counter'>Render Count: {renderCount}</span>
     </>
   );
 };

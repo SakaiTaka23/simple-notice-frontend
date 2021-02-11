@@ -9,7 +9,7 @@ const NestedFieldArray: React.FC<Prop> = ({ nestIndex }) => {
   const { control, register } = useFormContext();
   const { fields, remove, append } = useFieldArray({
     control,
-    name: `test[${nestIndex}].nestedArray`,
+    name: `questions[${nestIndex}].nestedArray`,
   });
 
   return (
@@ -17,15 +17,14 @@ const NestedFieldArray: React.FC<Prop> = ({ nestIndex }) => {
       {fields.map((item, k) => {
         return (
           <div key={item.id} style={{ marginLeft: 20 }}>
-            <label>Nested Array:</label>
+            <label>Choice : </label>
             <input
-              name={`test[${nestIndex}].nestedArray[${k}].field1`}
+              name={`questions[${nestIndex}].choice[${k}]`}
               ref={register({ required: true })}
-              defaultValue={item.field1}
+              defaultValue={item.choice}
               style={{ marginRight: '25px' }}
             />
 
-            <input name={`test[${nestIndex}].nestedArray[${k}].field2`} ref={register()} defaultValue={item.field2} />
             <button type='button' onClick={() => remove(k)}>
               Delete Nested
             </button>
@@ -37,8 +36,7 @@ const NestedFieldArray: React.FC<Prop> = ({ nestIndex }) => {
         type='button'
         onClick={() =>
           append({
-            field1: 'field1',
-            field2: 'field2',
+            choice: 'choice append',
           })
         }
       >

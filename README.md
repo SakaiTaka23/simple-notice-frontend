@@ -126,7 +126,7 @@
   	[
       "title" : "title",
       "type" : "text | radio | check",
-      "answers" : [ possible answers],
+      "choice" : [ possible answers],
     ],
   ...
 }

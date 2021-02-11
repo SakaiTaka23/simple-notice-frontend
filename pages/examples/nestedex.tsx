@@ -3,34 +3,41 @@ import { FormProvider, useForm } from 'react-hook-form';
 import FieldArray from './components/FieldArray';
 
 const defaultValues = {
-  test: [
+  title: '',
+  description: '',
+  owner: '',
+  questions: [
     {
-      name: 'useFieldArray1',
-      nestedArray: [{ field1: 'field1', field2: 'field2' }],
+      title: 'title1',
+      type: '',
+      nestedArray: [{ choice: 'choice' }],
     },
     {
-      name: 'useFieldArray2',
-      nestedArray: [{ field1: 'field1', field2: 'field2' }],
+      title: 'title2',
+      type: '',
+      nestedArray: [{ choice: 'choice' }],
     },
   ],
 };
 
 function NestdeEx() {
   const methods = useForm({ defaultValues });
-  const onSubmit = (data: any) => console.log('data', data);
+  const onSubmit = (data: never) => console.log(data);
 
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)}>
-        <h1>Array of Array Fields</h1>
-        <p>The following example demonstrate the ability of building nested array fields.</p>
-
+        <h1>アンケート新規作成</h1>
+        title
+        <input type='text' name='title' ref={methods.register} />
+        description
+        <input type='text' name='description' ref={methods.register} />
+        owner
+        <input type='text' name='owner' ref={methods.register} />
         <FieldArray />
-
         <button type='button' onClick={() => methods.reset(defaultValues)}>
           Reset
         </button>
-
         <input type='submit' />
       </form>
     </FormProvider>
