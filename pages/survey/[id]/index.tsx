@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { formData } from '../../type/formType';
-import Questions from '../../components/Questions';
+import { formData } from '../../../type/formType';
+import Questions from '../../../components/Questions';
 
 const Form: FC = () => {
   const [surveyData, setSurveyData] = useState<formData>({

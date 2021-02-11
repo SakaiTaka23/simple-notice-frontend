@@ -84,6 +84,37 @@
 
 
 
+## 結果表示
+
+* ページ数によってはページネーションを追加したい
+
+* 要素
+* 問題、結果
+
+
+
+* 結果表示jsonの理想系
+
+```json
+{
+  "title" : "some title",
+  "description" : "some description",
+  "owner" : "owner",
+  "questions":
+  	[
+      "title" : "title",
+      "type" : "type",
+      "label" : [label data name],
+      "data" : [datas],
+    ],
+  	...
+}
+```
+
+
+
+
+
 ## Chart.js
 
 ```tsx
