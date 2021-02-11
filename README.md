@@ -113,6 +113,25 @@
 
 
 
+## アンケート作成
+
+* ユーザーの入力をもとに新たにアンケートを作成
+
+```json
+{
+  "title" : "some title",
+  "description" : "some description",
+  "owner" : "owner",
+  "questions" : 
+  	[
+      "title" : "title",
+      "type" : "text | radio | check",
+      "answers" : [ possible answers],
+    ],
+  ...
+}
+```
+
 
 
 ## Chart.js
