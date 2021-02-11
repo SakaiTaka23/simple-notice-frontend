@@ -9,7 +9,7 @@ type QuestionResult =
   | {
       title: string;
       type: 'text';
-      data: number[];
+      label: string[];
     }
   | {
       title: string;

@@ -22,12 +22,17 @@ const Index = () => {
       Available Questions
       {surveys.map((survey, index) => {
         return (
-          <Link key={index} href={`/survey/${survey.id}`}>
-            <a>
-              <h1>title : {survey.title}</h1>
-              <h2>description : {survey.description}</h2>
-            </a>
-          </Link>
+          <div key={index}>
+            <Link href={`/survey/${survey.id}`}>
+              <a>
+                <h1>title : {survey.title}</h1>
+                <h2>description : {survey.description}</h2>
+              </a>
+            </Link>
+            <Link href={`/survey/${survey.id}/result`}>
+              <a>デバッグ用 : 結果へのリンク</a>
+            </Link>
+          </div>
         );
       })}
     </>
