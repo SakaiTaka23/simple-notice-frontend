@@ -1,13 +1,12 @@
 import React from 'react';
-import { useFieldArray } from 'react-hook-form';
+import { useFieldArray, useFormContext } from 'react-hook-form';
 
 type Prop = {
   nestIndex: any;
-  control: any;
-  register: any;
 };
 
-const NestedFieldArray: React.FC<Prop> = ({ nestIndex, control, register }) => {
+const NestedFieldArray: React.FC<Prop> = ({ nestIndex }) => {
+  const { control, register } = useFormContext();
   const { fields, remove, append } = useFieldArray({
     control,
     name: `test[${nestIndex}].nestedArray`,

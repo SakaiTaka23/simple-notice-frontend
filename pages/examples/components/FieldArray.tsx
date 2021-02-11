@@ -1,17 +1,11 @@
 import React from 'react';
-import { useFieldArray } from 'react-hook-form';
+import { useFieldArray, useFormContext } from 'react-hook-form';
 import NestedArray from './NestedFieldArray';
 
 let renderCount = 0;
 
-type Prop = {
-  control: any;
-  register: any;
-  setValue: any;
-  getValues: any;
-};
-
-const FieldsArray: React.FC<Prop> = ({ control, register, setValue, getValues }) => {
+const FieldArray: React.FC = () => {
+  const { control, register, getValues, setValue } = useFormContext();
   const { fields, append, remove, prepend } = useFieldArray({
     control,
     name: 'test',
@@ -30,7 +24,7 @@ const FieldsArray: React.FC<Prop> = ({ control, register, setValue, getValues })
               <button type='button' onClick={() => remove(index)}>
                 Delete
               </button>
-              <NestedArray nestIndex={index} {...{ control, register }} />
+              <NestedArray nestIndex={index} />
             </li>
           );
         })}
@@ -91,4 +85,4 @@ const FieldsArray: React.FC<Prop> = ({ control, register, setValue, getValues })
   );
 };
 
-export default FieldsArray;
+export default FieldArray;
