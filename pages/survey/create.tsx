@@ -22,7 +22,7 @@ const defaultValues = {
 
 const Create = () => {
   const methods = useForm({ defaultValues });
-  const onSubmit = (data: never) => console.log(data);
+  const onSubmit = (data: never) => console.log(JSON.stringify(data));
 
   return (
     <FormProvider {...methods}>

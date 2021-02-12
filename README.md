@@ -124,11 +124,36 @@
   "owner" : "owner",
   "questions" : 
   	[
+      {
       "title" : "title",
       "type" : "text | radio | check",
       "choice" : [ possible answers],
+      },
+      ...
     ],
-  ...
+}
+```
+
+* 実際にできたもの
+
+```json
+{
+  "title":"",
+  "description":"",
+  "owner":"",
+  "questions":
+  [
+    {
+      "title":"title1",
+      "type":"text",
+      "choice":["choice"]
+    },
+    {
+      "title":"title2",
+      "type":"check",
+      "choice":["choice","choice append","choice append"]
+    },
+  ],
 }
 ```
 
