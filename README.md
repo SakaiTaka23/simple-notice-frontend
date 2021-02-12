@@ -67,18 +67,18 @@
 
 
 * アンケート回答のためのPOSTするjson例
+* url http://localhost/api/survey/04bcd32d-c41b-35db-aeac-265408b83c7f
 
 ```json
 {
-  id: "04bcd32d-c41b-35db-aeac-265408b83c7f",
-  1: "a",
-  2: [
+  "1": "a",
+  "2": [
     "b",
     "d"
   ], 
-  3: "b", 
-  4: "d", 
-  5: "e"
+  "3": "b", 
+  "4": "d", 
+  "5": "e"
 }
 ```
 
@@ -97,17 +97,28 @@
 
 ```json
 {
-  "title" : "some title",
-  "description" : "some description",
-  "owner" : "owner",
+  "title":"title",
+  "description":"description",
+  "owner":"owner",
+  "delete_pass":"pass",
+  "from":"2021-2-12",
+  "to":"2021-2-19",
   "questions":
-  	[
-      "title" : "title",
-      "type" : "type",
-      "label" : [label data name],
-      "data" : [datas],
-    ],
-  	...
+  [
+    {
+      "title":"title1",
+      "type":"text",
+      "is_required":true,
+      "choice":["choice"]
+    },
+    {
+      "title":"title2",
+      "type":"check",
+      "is_required":false,
+      "choice":["choice","choice append","choice append"]
+    },
+    ...
+  ]
 }
 ```
 
