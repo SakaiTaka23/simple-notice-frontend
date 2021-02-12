@@ -1,36 +1,46 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import React from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import FieldArray from '../../components/FieldArray';
+
+const defaultValues = {
+  title: '',
+  description: '',
+  owner: '',
+  questions: [
+    {
+      title: 'title1',
+      type: '',
+      nestedArray: [{ choice: 'choice' }],
+    },
+    {
+      title: 'title2',
+      type: '',
+      nestedArray: [{ choice: 'choice' }],
+    },
+  ],
+};
 
 const Create = () => {
-  const { register, handleSubmit, watch, errors } = useForm();
-  const [inputCount, setInputCount] = useState(3);
-
-  const onSubmit = (data: any) => console.log(data);
+  const methods = useForm({ defaultValues });
+  const onSubmit = (data: never) => console.log(data);
 
   return (
-    <div>
-      <h1>create survey</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <h3>The Title of the Survey</h3>
-        <input type='text' name='title' ref={register} />
-        <h3>Description of the Survey</h3>
-        <input type='text' name='description' ref={register} />
-        <h3>Your Name or Company Name</h3>
-        <input type='text' name='owner' ref={register} />
-
-        <div>
-          <input type='text' name='title' ref={register} />
-          <select name='type'>
-            <option value='text'>text</option>
-            <option value='radio'>radio</option>
-            <option value='check'>check</option>
-          </select>
-        </div>
-
-        <br />
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)}>
+        <h1>アンケート新規作成</h1>
+        title
+        <input type='text' name='title' placeholder='survey title' ref={methods.register} />
+        description
+        <input type='text' name='description' placeholder='survey description' ref={methods.register} />
+        owner
+        <input type='text' name='owner' placeholder='survey owner' ref={methods.register} />
+        <FieldArray />
+        <button type='button' onClick={() => methods.reset(defaultValues)}>
+          Reset
+        </button>
         <input type='submit' />
       </form>
-    </div>
+    </FormProvider>
   );
 };
 
