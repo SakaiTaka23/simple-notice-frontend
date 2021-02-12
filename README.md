@@ -157,6 +157,41 @@
 }
 ```
 
+* バックエンドの想定
+
+```json
+        $data = [
+            "title" => "title",
+            "description" => "description",
+            "owner" => "owner",
+            "delete_pass" => "pass",
+            "from" => "2021-2-12",
+            "to"=>"2021-2-19",
+            "questions" => [
+                0 => [
+                    "title" => "title1",
+                    "type" => "text",
+                    "is_required" => false,
+                    "choice" => [
+                        0 => "choice"
+                        ]
+                    ],
+                1 => [
+                    "title" => "title2",
+                    "type" => "check",
+                    "is_required" => true,
+                    "choice" => [
+                        0 => "choice",
+                        1 => "choice append",
+                        2 => "choice append",
+                        ]
+                    ]
+                ]
+            ];
+```
+
+
+
 
 
 ## Chart.js

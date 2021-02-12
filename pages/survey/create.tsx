@@ -34,6 +34,12 @@ const Create = () => {
         <input type='text' name='description' placeholder='survey description' ref={methods.register} />
         owner
         <input type='text' name='owner' placeholder='survey owner' ref={methods.register} />
+        delete pass
+        <input type='text' name='delete_pass' placeholder='password to delete survey' ref={methods.register} />
+        from
+        <input type='date' name='from' placeholder='when to start survey' ref={methods.register} />
+        to
+        <input type='date' name='to' placeholder='when to end survey' ref={methods.register} />
         <FieldArray />
         <button type='button' onClick={() => methods.reset(defaultValues)}>
           Reset
