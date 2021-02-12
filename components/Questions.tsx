@@ -12,13 +12,13 @@ type Prop = {
 const Questions: FC<Prop> = ({ id, questions }) => {
   const methods = useForm();
   // apiを叩いてデータ送信
-  const submitData = async (data: any) => {
+  const submitData = async (data: never) => {
     const url = `http://127.0.0.1/api/survey/${id}`;
     const response = await axios.post(url, data, { headers: { 'Content-Type': 'application/json' } });
     console.log(response);
   };
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: never) => {
     console.log(data);
     submitData(data);
   };

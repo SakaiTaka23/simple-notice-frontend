@@ -26,7 +26,13 @@ const FieldArray: React.FC = () => {
                 <option value='check'>check</option>
                 <option value='radio'>radio</option>
               </select>
-
+              <input
+                type='checkbox'
+                name={`questions[${index}].is_required`}
+                ref={register()}
+                defaultChecked={item.is_required}
+              />
+              is required
               <button type='button' onClick={() => remove(index)}>
                 Delete
               </button>

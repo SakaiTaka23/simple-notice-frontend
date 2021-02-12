@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import FieldArray from '../../components/FieldArray';
@@ -10,11 +11,13 @@ const defaultValues = {
     {
       title: 'title1',
       type: '',
+      is_required: false,
       nestedArray: [{ choice: 'choice' }],
     },
     {
       title: 'title2',
       type: '',
+      is_required: false,
       nestedArray: [{ choice: 'choice' }],
     },
   ],
@@ -22,7 +25,12 @@ const defaultValues = {
 
 const Create = () => {
   const methods = useForm({ defaultValues });
-  const onSubmit = (data: never) => console.log(JSON.stringify(data));
+  const onSubmit = async (data: never) => {
+    console.log(data);
+    const url = 'http://127.0.0.1/api/survey';
+    const response = await axios.post(url, data, { headers: { 'Content-Type': 'application/json' } });
+    console.log(response.data);
+  };
 
   return (
     <FormProvider {...methods}>
