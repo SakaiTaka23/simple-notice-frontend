@@ -149,22 +149,27 @@
 
 ```json
 {
-  "title":"",
-  "description":"",
-  "owner":"",
+  "title":"title",
+  "description":"desc",
+  "owner":"owner",
+  "delete_pass":"pass",
+  "from":"2021-2-12",
+  "to":"2021-2-19",
   "questions":
   [
     {
       "title":"title1",
       "type":"text",
+      "is_required":true,
       "choice":["choice"]
     },
     {
       "title":"title2",
       "type":"check",
+      "is_required":false,
       "choice":["choice","choice append","choice append"]
-    },
-  ],
+    }
+  ]
 }
 ```
 
