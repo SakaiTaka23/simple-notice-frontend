@@ -20,6 +20,7 @@ const FieldArray: React.FC = () => {
                 ref={register({ required: true })}
                 placeholder='question'
                 defaultValue={item.title}
+                required
               />
               <select name={`questions[${index}].type`} ref={register()} defaultValue={item.type}>
                 <option value='text'>text</option>

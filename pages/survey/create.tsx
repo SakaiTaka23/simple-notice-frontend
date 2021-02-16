@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import FieldArray from '../../components/FieldArray';
@@ -27,12 +28,16 @@ const defaultValues = {
 };
 
 const Create = () => {
+  const router = useRouter();
   const methods = useForm({ defaultValues });
   const onSubmit = async (data: never) => {
     console.log(data);
-    // const url = 'http://127.0.0.1/api/survey';
-    // const response = await axios.post(url, data, { headers: { 'Content-Type': 'application/json' } });
-    // console.log(response.data);
+    const url = 'http://127.0.0.1/api/survey';
+    const response = await axios.post(url, data, { headers: { 'Content-Type': 'application/json' } });
+    console.log(response.data);
+    router.push({
+      pathname: '/survey',
+    });
   };
 
   return (

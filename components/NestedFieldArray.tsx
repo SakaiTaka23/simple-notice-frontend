@@ -22,6 +22,7 @@ const NestedFieldArray: React.FC<Prop> = ({ nestIndex }) => {
               name={`questions[${nestIndex}].choice[${index}]`}
               ref={register({ required: true })}
               defaultValue={item.choice}
+              required
             />
 
             <button type='button' onClick={() => remove(index)}>

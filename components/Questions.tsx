@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import React, { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { question } from '../type/formType';
@@ -10,12 +11,16 @@ type Prop = {
 };
 
 const Questions: FC<Prop> = ({ id, questions }) => {
+  const router = useRouter();
   const methods = useForm();
   // apiを叩いてデータ送信
   const submitData = async (data: never) => {
     const url = `http://127.0.0.1/api/survey/${id}`;
     const response = await axios.post(url, data, { headers: { 'Content-Type': 'application/json' } });
     console.log(response);
+    router.push({
+      pathname: '/survey',
+    });
   };
 
   const onSubmit = (data: never) => {
