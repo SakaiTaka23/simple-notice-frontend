@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { FC } from 'react';
@@ -25,7 +26,7 @@ const Questions: FC<Prop> = ({ id, questions }) => {
 
   const onSubmit = (data: never) => {
     console.log(data);
-    submitData(data);
+    // submitData(data);
   };
 
   return (
@@ -39,6 +40,7 @@ const Questions: FC<Prop> = ({ id, questions }) => {
             </div>
           );
         })}
+
         <input type='submit' />
       </form>
     </FormProvider>

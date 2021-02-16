@@ -1,4 +1,4 @@
-import { TextField } from '@material-ui/core';
+import { Checkbox, FormControl, FormControlLabel, Radio, RadioGroup, TextField } from '@material-ui/core';
 import React, { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { question } from '../type/formType';
@@ -9,7 +9,7 @@ type Prop = {
 
 const Input: FC<Prop> = ({ question }) => {
   const { register } = useFormContext();
-  const { question_number, type, is_required } = question;
+  const { question_number, is_required } = question;
 
   if (question.type === 'text') {
     return (
@@ -19,24 +19,47 @@ const Input: FC<Prop> = ({ question }) => {
     );
   }
 
-  if (question.type === 'checkbox' || question.type === 'radio') {
+  if (question.type === 'checkbox') {
     return (
       <>
         {question.choices.map((choice, index) => {
           return (
-            <div key={index}>
-              <input
-                type={type}
-                name={question_number.toString()}
-                value={choice}
-                required={is_required}
-                ref={register()}
+            <FormControl key={index}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    name={question_number.toString()}
+                    value={choice}
+                    inputRef={register({ required: is_required })}
+                  />
+                }
+                label={choice}
               />
-              {choice}
-            </div>
+            </FormControl>
           );
         })}
       </>
+    );
+  }
+
+  if (question.type === 'radio') {
+    return (
+      <FormControl>
+        <RadioGroup name={question_number.toString()}>
+          {question.choices.map((choice, index) => {
+            return (
+              <FormControlLabel
+                key={index}
+                name={question_number.toString()}
+                value={choice}
+                control={<Radio />}
+                label={choice}
+                inputRef={register({ required: is_required })}
+              />
+            );
+          })}
+        </RadioGroup>
+      </FormControl>
     );
   }
   return <div>error</div>;

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { formData } from '../../../type/formType';
 import Questions from '../../../components/Questions';
+import { Typography } from '@material-ui/core';
 
 const Form: FC = () => {
   const [surveyData, setSurveyData] = useState<formData>({
@@ -30,19 +31,17 @@ const Form: FC = () => {
   }, [id]);
 
   const { title, description, questions } = surveyData;
-  console.log(questions);
 
   if (loading || id === undefined) {
     return <h1>loading</h1>;
   }
 
   return (
-    <div>
-      <h1>survey</h1>
-      <h1>{title}</h1>
-      <h2>{description}</h2>
+    <>
+      <Typography variant='h4'>{title}</Typography>
+      <Typography variant='h5'>{description}</Typography>
       <Questions key='1' id={id} questions={questions} />
-    </div>
+    </>
   );
 };
 
