@@ -1,3 +1,4 @@
+import { TextField } from '@material-ui/core';
 import React, { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { question } from '../type/formType';
@@ -13,8 +14,7 @@ const Input: FC<Prop> = ({ question }) => {
   if (question.type === 'text') {
     return (
       <>
-        <div>デバッグ用 : {question_number}</div>
-        <input type={type} name={question_number.toString()} ref={register({ required: is_required })} />
+        <TextField name={question_number.toString()} inputRef={register({ required: is_required })} />
       </>
     );
   }
@@ -22,7 +22,6 @@ const Input: FC<Prop> = ({ question }) => {
   if (question.type === 'checkbox' || question.type === 'radio') {
     return (
       <>
-        <div>デバッグ用 : {question_number}</div>
         {question.choices.map((choice, index) => {
           return (
             <div key={index}>
@@ -30,7 +29,8 @@ const Input: FC<Prop> = ({ question }) => {
                 type={type}
                 name={question_number.toString()}
                 value={choice}
-                ref={register({ required: is_required })}
+                required={is_required}
+                ref={register()}
               />
               {choice}
             </div>
