@@ -1,3 +1,4 @@
+import { TextField } from '@material-ui/core';
 import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import NestedFieldArray from './NestedFieldArray';
@@ -15,9 +16,10 @@ const FieldArray: React.FC = () => {
         {fields.map((item, index) => {
           return (
             <li key={item.id}>
-              <input
+              <TextField
+                label='question title'
                 name={`questions[${index}].title`}
-                ref={register({ required: true })}
+                inputRef={register({ required: 'This field is required' })}
                 placeholder='question'
                 defaultValue={item.title}
                 required
