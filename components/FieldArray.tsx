@@ -17,7 +17,7 @@ const FieldArray: React.FC = () => {
             <li key={item.id}>
               <input
                 name={`questions[${index}].title`}
-                ref={register()}
+                ref={register({ required: true })}
                 placeholder='question'
                 defaultValue={item.title}
               />
