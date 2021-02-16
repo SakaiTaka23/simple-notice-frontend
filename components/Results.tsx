@@ -1,3 +1,4 @@
+import { Paper, Typography } from '@material-ui/core';
 import React, { FC } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
 import { QuestionResult } from '../type/api/surveyResultTypes';
@@ -25,9 +26,9 @@ const Results: FC<Prop> = ({ questions }) => {
         if (question.type === 'text') {
           return (
             <div key={index}>
-              <h3>{question.title}</h3>
+              <Typography variant='subtitle1'>{question.title}</Typography>
               {question.label.map((answer) => {
-                return <p key={answer}>{answer}</p>;
+                return <Paper key={answer}>{answer}</Paper>;
               })}
             </div>
           );
@@ -44,7 +45,7 @@ const Results: FC<Prop> = ({ questions }) => {
           };
           return (
             <div key={index}>
-              <h3>{question.title}</h3>
+              <Typography variant='subtitle1'>{question.title}</Typography>
               <HorizontalBar data={data} options={options} />
             </div>
           );

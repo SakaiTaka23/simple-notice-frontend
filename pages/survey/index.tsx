@@ -23,21 +23,19 @@ const Index = () => {
       <Typography variant='h3'>Available Questions</Typography>
       {surveys.map((survey, index) => {
         return (
-          <>
-            <Card>
-              <Link href={`/survey/${survey.id}`} key={index}>
-                <CardActionArea>
-                  <CardContent>
-                    <Typography variant='h4'>{survey.title}</Typography>
-                    <Typography variant='h5'>{survey.description}</Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Link>
-              <Link href={`/survey/${survey.id}/result`}>
-                <a>デバッグ用 : 結果へのリンク</a>
-              </Link>
-            </Card>
-          </>
+          <Card key={index}>
+            <Link href={`/survey/${survey.id}`}>
+              <CardActionArea>
+                <CardContent>
+                  <Typography variant='h4'>{survey.title}</Typography>
+                  <Typography variant='h5'>{survey.description}</Typography>
+                </CardContent>
+              </CardActionArea>
+            </Link>
+            <Link href={`/survey/${survey.id}/result`}>
+              <a>デバッグ用 : 結果へのリンク</a>
+            </Link>
+          </Card>
         );
       })}
     </>

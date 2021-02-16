@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
@@ -38,9 +39,9 @@ const Result = () => {
 
   return (
     <>
-      <h1>title : {resultData.title}</h1>
-      <h2>description : {resultData.description}</h2>
-      <h3>owner : {resultData.owner}</h3>
+      <Typography variant='h3'>{resultData.title}</Typography>
+      <Typography variant='h4'>{resultData.description}</Typography>
+      <Typography variant='h5'>{resultData.owner}</Typography>
       <Results key='1' questions={questions} />
     </>
   );

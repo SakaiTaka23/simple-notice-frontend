@@ -20,13 +20,13 @@ const Questions: FC<Prop> = ({ id, questions }) => {
     const response = await axios.post(url, data, { headers: { 'Content-Type': 'application/json' } });
     console.log(response);
     router.push({
-      pathname: '/survey',
+      pathname: `/survey/${id}/result`,
     });
   };
 
   const onSubmit = (data: never) => {
     console.log(data);
-    // submitData(data);
+    submitData(data);
   };
 
   return (
@@ -41,7 +41,9 @@ const Questions: FC<Prop> = ({ id, questions }) => {
           );
         })}
 
-        <input type='submit' />
+        <Button type='submit' variant='contained' color='secondary'>
+          Submit
+        </Button>
       </form>
     </FormProvider>
   );
