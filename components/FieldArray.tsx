@@ -1,4 +1,13 @@
-import { Button, Checkbox, FormControlLabel, MenuItem, Select, TextField, Typography } from '@material-ui/core';
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import React from 'react';
 import { Controller, useFieldArray, useFormContext } from 'react-hook-form';
 import NestedFieldArray from './NestedFieldArray';
@@ -16,6 +25,7 @@ const FieldArray: React.FC = () => {
         {fields.map((item, index) => {
           return (
             <li key={item.id}>
+              <Typography>Question {index + 1}</Typography>
               <TextField
                 label='question title'
                 name={`questions[${index}].title`}
@@ -36,18 +46,14 @@ const FieldArray: React.FC = () => {
                   </Select>
                 }
               />
-              <Controller
-                control={control}
-                name={`questions[${index}].is_required`}
-                defaultValue=''
-                defaultChecked={false}
-                as={
-                  <>
-                    <Checkbox name={`questions[${index}].is_required`} />
-                    is required
-                  </>
-                }
-              />
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox name={`questions[${index}].is_required`} defaultChecked={false} inputRef={register} />
+                  }
+                  label='is required'
+                />
+              </FormGroup>
               <Button variant='contained' onClick={() => remove(index)}>
                 Delete
               </Button>
@@ -57,55 +63,53 @@ const FieldArray: React.FC = () => {
         })}
       </ul>
 
-      <section>
-        <Button
-          type='button'
-          onClick={() => {
-            append({ name: 'append' });
-          }}
-        >
-          append
-        </Button>
+      <Button
+        type='button'
+        onClick={() => {
+          append({ name: 'append' });
+        }}
+      >
+        append
+      </Button>
 
-        <Button
-          type='button'
-          onClick={() => {
-            setValue('questions', [
-              ...getValues().questions,
-              {
-                name: 'append',
-                nestedArray: [{ choice: 'choice append' }],
-              },
-            ]);
-          }}
-        >
-          Append Nested
-        </Button>
+      <Button
+        type='button'
+        onClick={() => {
+          setValue('questions', [
+            ...getValues().questions,
+            {
+              name: 'append',
+              nestedArray: [{ choice: 'choice append' }],
+            },
+          ]);
+        }}
+      >
+        Append Nested
+      </Button>
 
-        <Button
-          type='button'
-          onClick={() => {
-            prepend({ title: 'title append' });
-          }}
-        >
-          prepend
-        </Button>
+      <Button
+        type='button'
+        onClick={() => {
+          prepend({ title: 'title append' });
+        }}
+      >
+        prepend
+      </Button>
 
-        <Button
-          type='button'
-          onClick={() => {
-            setValue('questions', [
-              {
-                name: 'append',
-                nestedArray: [{ choice: 'append' }],
-              },
-              ...getValues().questions,
-            ]);
-          }}
-        >
-          prepend Nested
-        </Button>
-      </section>
+      <Button
+        type='button'
+        onClick={() => {
+          setValue('questions', [
+            {
+              name: 'append',
+              nestedArray: [{ choice: 'append' }],
+            },
+            ...getValues().questions,
+          ]);
+        }}
+      >
+        prepend Nested
+      </Button>
     </>
   );
 };

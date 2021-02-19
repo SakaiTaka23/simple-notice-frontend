@@ -1,3 +1,4 @@
+import { Button, TextField, Typography } from '@material-ui/core';
 import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 
@@ -13,27 +14,28 @@ const NestedFieldArray: React.FC<Prop> = ({ nestIndex }) => {
   });
 
   return (
-    <div>
+    <>
       {fields.map((item, index) => {
         return (
           <div key={item.id}>
-            <label>Choice : </label>
-            <input
+            <Typography>Choice : </Typography>
+
+            <TextField
               name={`questions[${nestIndex}].choice[${index}]`}
-              ref={register({ required: true })}
+              inputRef={register({ required: true })}
               defaultValue={item.choice}
               required
             />
 
-            <button type='button' onClick={() => remove(index)}>
+            <Button variant='contained' onClick={() => remove(index)}>
               Delete Nested
-            </button>
+            </Button>
           </div>
         );
       })}
 
-      <button
-        type='button'
+      <Button
+        variant='contained'
         onClick={() =>
           append({
             choice: 'choice append',
@@ -41,10 +43,10 @@ const NestedFieldArray: React.FC<Prop> = ({ nestIndex }) => {
         }
       >
         Append Nested
-      </button>
+      </Button>
 
       <hr />
-    </div>
+    </>
   );
 };
 
