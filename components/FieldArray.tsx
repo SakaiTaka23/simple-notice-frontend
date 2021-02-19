@@ -1,6 +1,6 @@
-import { TextField } from '@material-ui/core';
+import { Button, Checkbox, FormControlLabel, MenuItem, Select, TextField, Typography } from '@material-ui/core';
 import React from 'react';
-import { useFieldArray, useFormContext } from 'react-hook-form';
+import { Controller, useFieldArray, useFormContext } from 'react-hook-form';
 import NestedFieldArray from './NestedFieldArray';
 
 const FieldArray: React.FC = () => {
@@ -24,21 +24,33 @@ const FieldArray: React.FC = () => {
                 defaultValue={item.title}
                 required
               />
-              <select name={`questions[${index}].type`} ref={register()} defaultValue={item.type}>
-                <option value='text'>text</option>
-                <option value='check'>check</option>
-                <option value='radio'>radio</option>
-              </select>
-              <input
-                type='checkbox'
-                name={`questions[${index}].is_required`}
-                ref={register()}
-                defaultChecked={item.is_required}
+              <Controller
+                control={control}
+                name={`questions[${index}].type`}
+                defaultValue={'text'}
+                as={
+                  <Select>
+                    <MenuItem value='text'>text</MenuItem>
+                    <MenuItem value='check'>check</MenuItem>
+                    <MenuItem value='radio'>radio</MenuItem>
+                  </Select>
+                }
               />
-              is required
-              <button type='button' onClick={() => remove(index)}>
+              <Controller
+                control={control}
+                name={`questions[${index}].is_required`}
+                defaultValue=''
+                defaultChecked={false}
+                as={
+                  <>
+                    <Checkbox name={`questions[${index}].is_required`} />
+                    is required
+                  </>
+                }
+              />
+              <Button variant='contained' onClick={() => remove(index)}>
                 Delete
-              </button>
+              </Button>
               <NestedFieldArray nestIndex={index} />
             </li>
           );
@@ -46,16 +58,16 @@ const FieldArray: React.FC = () => {
       </ul>
 
       <section>
-        <button
+        <Button
           type='button'
           onClick={() => {
             append({ name: 'append' });
           }}
         >
           append
-        </button>
+        </Button>
 
-        <button
+        <Button
           type='button'
           onClick={() => {
             setValue('questions', [
@@ -68,18 +80,18 @@ const FieldArray: React.FC = () => {
           }}
         >
           Append Nested
-        </button>
+        </Button>
 
-        <button
+        <Button
           type='button'
           onClick={() => {
             prepend({ title: 'title append' });
           }}
         >
           prepend
-        </button>
+        </Button>
 
-        <button
+        <Button
           type='button'
           onClick={() => {
             setValue('questions', [
@@ -92,7 +104,7 @@ const FieldArray: React.FC = () => {
           }}
         >
           prepend Nested
-        </button>
+        </Button>
       </section>
     </>
   );

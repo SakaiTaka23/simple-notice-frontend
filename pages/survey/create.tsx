@@ -1,4 +1,4 @@
-import { TextField, Typography } from '@material-ui/core';
+import { Button, TextField, Typography } from '@material-ui/core';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -103,10 +103,12 @@ const Create = () => {
           helperText={methods.errors.to && methods.errors.to.message}
         />
         <FieldArray />
-        <button type='button' onClick={() => methods.reset(defaultValues)}>
+        <Button variant='contained' onClick={() => methods.reset(defaultValues)}>
           Reset
-        </button>
-        <input type='submit' />
+        </Button>
+        <Button type='submit' variant='contained'>
+          Submit
+        </Button>
       </form>
     </FormProvider>
   );
