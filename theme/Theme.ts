@@ -17,6 +17,9 @@ const useStyles = makeStyles({
     border: '1px solid rgba( 255, 255, 255, 0.18 )',
     color: 'white',
   },
+  textField: {
+    width: '500px',
+  },
 });
 
 export { theme, useStyles };
