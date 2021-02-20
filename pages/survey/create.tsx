@@ -1,17 +1,14 @@
 import { Button, TextField, Typography } from '@material-ui/core';
 import axios from 'axios';
+import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import FieldArray from '../../components/FieldArray';
 import { createSurveyType } from '../../type/createSurveyType';
 
-let date = new Date('2021-02-27');
-const today = `
-${date.getFullYear()}-
-${(date.getMonth() + 1).toString().padStart(2, '0')}-
-${date.getDate().toString().padStart(2, '0')}
-`.replace(/\n|\r/g, '');
+const today = dayjs().format('YYYY-MM-DD');
+const weekAfter = dayjs().add(1, 'week').format('YYYY-MM-DD');
 
 const defaultValues = {
   title: '',
@@ -19,7 +16,7 @@ const defaultValues = {
   owner: '',
   delete_pass: '',
   from: today,
-  to: today,
+  to: weekAfter,
   questions: [],
 };
 
