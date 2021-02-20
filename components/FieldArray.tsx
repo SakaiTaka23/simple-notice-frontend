@@ -3,6 +3,7 @@ import {
   Checkbox,
   FormControlLabel,
   FormGroup,
+  Grid,
   MenuItem,
   Select,
   TextField,
@@ -21,47 +22,55 @@ const FieldArray: React.FC = () => {
 
   return (
     <>
-      <ul>
-        {fields.map((item, index) => {
-          return (
-            <li key={item.id}>
-              <Typography>Question {index + 1}</Typography>
-              <TextField
-                label='question title'
-                name={`questions[${index}].title`}
-                inputRef={register({ required: 'This field is required' })}
-                placeholder='question'
-                defaultValue={item.title}
-                required
-              />
-              <Controller
-                control={control}
-                name={`questions[${index}].type`}
-                defaultValue={'text'}
-                as={
-                  <Select>
-                    <MenuItem value='text'>text</MenuItem>
-                    <MenuItem value='check'>check</MenuItem>
-                    <MenuItem value='radio'>radio</MenuItem>
-                  </Select>
-                }
-              />
-              <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Checkbox name={`questions[${index}].is_required`} defaultChecked={false} inputRef={register} />
-                  }
-                  label='is required'
-                />
-              </FormGroup>
-              <Button variant='contained' onClick={() => remove(index)}>
-                Delete
-              </Button>
-              <NestedFieldArray nestIndex={index} />
-            </li>
-          );
-        })}
-      </ul>
+      <Grid container direction='column' justify='center'>
+        <ul>
+          {fields.map((item, index) => {
+            return (
+              <li key={item.id}>
+                <Typography>Question {index + 1}</Typography>
+                <Grid item>
+                  <TextField
+                    label='question title'
+                    name={`questions[${index}].title`}
+                    inputRef={register({ required: 'This field is required' })}
+                    placeholder='question'
+                    defaultValue={item.title}
+                    required
+                  />
+                </Grid>
+
+                <Grid item container direction='row'>
+                  <Controller
+                    control={control}
+                    name={`questions[${index}].type`}
+                    defaultValue={'text'}
+                    as={
+                      <Select>
+                        <MenuItem value='text'>text</MenuItem>
+                        <MenuItem value='check'>check</MenuItem>
+                        <MenuItem value='radio'>radio</MenuItem>
+                      </Select>
+                    }
+                  />
+                  <FormGroup>
+                    <FormControlLabel
+                      control={
+                        <Checkbox name={`questions[${index}].is_required`} defaultChecked={false} inputRef={register} />
+                      }
+                      label='is required'
+                    />
+                  </FormGroup>
+                </Grid>
+
+                <Button variant='contained' onClick={() => remove(index)}>
+                  Delete
+                </Button>
+                <NestedFieldArray nestIndex={index} />
+              </li>
+            );
+          })}
+        </ul>
+      </Grid>
 
       <Button
         type='button'
@@ -80,6 +89,7 @@ const FieldArray: React.FC = () => {
       >
         prepend
       </Button>
+      <br />
     </>
   );
 };

@@ -1,8 +1,16 @@
+html {
+  height: 100%;
+}
+
 body {
   background: violet url('../public/svg/bg.svg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  overflow: hidden;
+}
+
+a {
+  color: gainsboro;
+  text-decoration: none;
 }
