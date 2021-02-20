@@ -13,7 +13,7 @@ import { Controller, useFieldArray, useFormContext } from 'react-hook-form';
 import NestedFieldArray from './NestedFieldArray';
 
 const FieldArray: React.FC = () => {
-  const { control, register, getValues, setValue } = useFormContext();
+  const { control, register } = useFormContext();
   const { fields, append, remove, prepend } = useFieldArray({
     control,
     name: 'questions',
@@ -75,40 +75,10 @@ const FieldArray: React.FC = () => {
       <Button
         type='button'
         onClick={() => {
-          setValue('questions', [
-            ...getValues().questions,
-            {
-              name: 'append',
-              nestedArray: [{ choice: 'choice append' }],
-            },
-          ]);
-        }}
-      >
-        Append Nested
-      </Button>
-
-      <Button
-        type='button'
-        onClick={() => {
           prepend({ title: 'title append' });
         }}
       >
         prepend
-      </Button>
-
-      <Button
-        type='button'
-        onClick={() => {
-          setValue('questions', [
-            {
-              name: 'append',
-              nestedArray: [{ choice: 'append' }],
-            },
-            ...getValues().questions,
-          ]);
-        }}
-      >
-        prepend Nested
       </Button>
     </>
   );
