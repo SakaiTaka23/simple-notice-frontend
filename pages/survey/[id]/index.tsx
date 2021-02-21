@@ -3,9 +3,11 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { formData } from '../../../type/formType';
 import Questions from '../../../components/Questions';
-import { Typography } from '@material-ui/core';
+import { Box, Grid, Paper, Typography } from '@material-ui/core';
+import { useStyles } from '../../../theme/Theme';
 
 const Form: FC = () => {
+  const classes = useStyles();
   const [surveyData, setSurveyData] = useState<formData>({
     id: '1',
     title: 'title',
@@ -37,11 +39,20 @@ const Form: FC = () => {
   }
 
   return (
-    <>
-      <Typography variant='h4'>{title}</Typography>
-      <Typography variant='h5'>{description}</Typography>
-      <Questions key='1' id={id} questions={questions} />
-    </>
+    <div style={{ padding: 70 }}>
+      <Grid container direction='column' justify='center' spacing={6}>
+        <Paper className={classes.glass}>
+          <Box p={10}>
+            <Typography variant='h3'>{title}</Typography>
+            <br />
+            <Typography variant='h4'>{description}</Typography>
+            <br />
+            <hr />
+            <Questions key='1' id={id} questions={questions} />
+          </Box>
+        </Paper>
+      </Grid>
+    </div>
   );
 };
 

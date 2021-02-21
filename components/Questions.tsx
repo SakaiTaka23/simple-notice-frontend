@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Box, Button, Typography } from '@material-ui/core';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { FC } from 'react';
@@ -34,16 +34,22 @@ const Questions: FC<Prop> = ({ id, questions }) => {
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         {questions.map((question, index) => {
           return (
-            <div key={index}>
-              <h2>{question.title}</h2>
+            <Box key={index} py={2}>
+              <Box pb={2}>
+                <Typography variant='h5'>
+                  {question.title} {question.is_required ? '*' : ''}
+                </Typography>
+              </Box>
               <Input question={question} />
-            </div>
+            </Box>
           );
         })}
 
-        <Button type='submit' variant='contained' color='secondary'>
-          Submit
-        </Button>
+        <Box pt={3}>
+          <Button type='submit' size='large' variant='contained' color='secondary'>
+            Submit
+          </Button>
+        </Box>
       </form>
     </FormProvider>
   );
