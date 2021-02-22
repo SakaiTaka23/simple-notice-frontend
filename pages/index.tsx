@@ -1,7 +1,17 @@
+import { Box, Grid } from '@material-ui/core';
 import React from 'react';
+import AppealOne from '../components/Landing/AppealOne';
+import HeroSection from '../components/Landing/HeroSection';
 
 const index = () => {
-  return <div>this is landing page</div>;
+  return (
+    <>
+      <HeroSection />
+      <Grid container direction='column'>
+        <AppealOne />
+      </Grid>
+    </>
+  );
 };
 
 export default index;
