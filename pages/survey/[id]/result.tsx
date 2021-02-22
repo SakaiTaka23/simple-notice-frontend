@@ -1,11 +1,13 @@
-import { Typography } from '@material-ui/core';
+import { Paper, Typography } from '@material-ui/core';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import Results from '../../../components/Results';
+import { useStyles } from '../../../theme/Theme';
 import { SurveyResult } from '../../../type/api/surveyResultTypes';
 
 const Result = () => {
+  const classes = useStyles();
   const [resultData, setResultData] = useState<SurveyResult>({
     title: 'title',
     description: 'desc',
@@ -39,9 +41,11 @@ const Result = () => {
 
   return (
     <>
-      <Typography variant='h3'>{resultData.title}</Typography>
-      <Typography variant='h4'>{resultData.description}</Typography>
-      <Typography variant='h5'>{resultData.owner}</Typography>
+      <Paper className={classes.glass}>
+        <Typography variant='h3'>{resultData.title}</Typography>
+        <Typography variant='h4'>{resultData.description}</Typography>
+        <Typography variant='h5'>{resultData.owner}</Typography>
+      </Paper>
       <Results key='1' questions={questions} />
     </>
   );

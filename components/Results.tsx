@@ -1,6 +1,7 @@
-import { Paper, Typography } from '@material-ui/core';
+import { Box, Paper, Typography } from '@material-ui/core';
 import React, { FC } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
+import { useStyles } from '../theme/Theme';
 import { QuestionResult } from '../type/api/surveyResultTypes';
 
 type Prop = {
@@ -8,15 +9,32 @@ type Prop = {
 };
 
 const Results: FC<Prop> = ({ questions }) => {
+  const classes = useStyles();
   const options = {
     scales: {
       xAxes: [
         {
           ticks: {
+            fontColor: 'white',
+            fontSize: 15,
             beginAtZero: true,
           },
         },
       ],
+      yAxes: [
+        {
+          ticks: {
+            fontColor: 'white',
+            fontSize: 15,
+          },
+        },
+      ],
+    },
+  };
+  const legend = {
+    labels: {
+      fontColor: 'white',
+      fontSize: 20,
     },
   };
 
@@ -25,12 +43,18 @@ const Results: FC<Prop> = ({ questions }) => {
       {questions.map((question, index) => {
         if (question.type === 'text') {
           return (
-            <div key={index}>
-              <Typography variant='subtitle1'>{question.title}</Typography>
-              {question.label.map((answer) => {
-                return <Paper key={answer}>{answer}</Paper>;
-              })}
-            </div>
+            <Box py={2} key={index}>
+              <Paper className={classes.glass}>
+                <Typography variant='h5'>{question.title}</Typography>
+                {question.label.map((answer) => {
+                  return (
+                    <Typography key={answer} variant='subtitle1'>
+                      {answer}
+                    </Typography>
+                  );
+                })}
+              </Paper>
+            </Box>
           );
         }
         if (question.type === 'checkbox' || question.type === 'radio') {
@@ -40,14 +64,18 @@ const Results: FC<Prop> = ({ questions }) => {
               {
                 label: 'votes',
                 data: question.data,
+                backgroundColor: 'rgba(30, 144, 255, 1)',
               },
             ],
           };
+
           return (
-            <div key={index}>
-              <Typography variant='subtitle1'>{question.title}</Typography>
-              <HorizontalBar data={data} options={options} />
-            </div>
+            <Box py={2} key={index}>
+              <Paper className={classes.glass}>
+                <Typography variant='h5'>{question.title}</Typography>
+                <HorizontalBar data={data} options={options} legend={legend} />
+              </Paper>
+            </Box>
           );
         }
       })}
