@@ -1,6 +1,7 @@
 import { MuiThemeProvider } from '@material-ui/core';
 import { AppProps } from 'next/app';
 import React from 'react';
+import Nav from '../components/Nav';
 import '../styles/globals.css';
 import { theme } from '../theme/Theme';
 
@@ -14,6 +15,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   }, []);
   return (
     <MuiThemeProvider theme={theme}>
+      <Nav />
       <Component {...pageProps} />
     </MuiThemeProvider>
   );
