@@ -1,6 +1,7 @@
-import { Box, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import React from 'react';
-import AppealOne from '../components/Landing/AppealOne';
+import AppealAnalize from '../components/Landing/AppealAnalize';
+import AppealCreate from '../components/Landing/AppealCreate';
 import HeroSection from '../components/Landing/HeroSection';
 
 const index = () => {
@@ -8,7 +9,8 @@ const index = () => {
     <>
       <HeroSection />
       <Grid container direction='column'>
-        <AppealOne />
+        <AppealCreate />
+        <AppealAnalize />
       </Grid>
     </>
   );
