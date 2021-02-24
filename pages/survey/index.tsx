@@ -38,7 +38,7 @@ const Index = () => {
         <Box display='flex' justifyContent='center'>
           <Paper className={classes.glass}>
             <Box p={3}>
-              <Pagination count={10} size='large' variant='outlined' color='primary' />
+              <Pagination showFirstButton showLastButton count={10} size='large' variant='outlined' color='primary' />
             </Box>
           </Paper>
         </Box>
