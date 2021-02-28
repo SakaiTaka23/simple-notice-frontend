@@ -19,6 +19,8 @@ const useStyles = makeStyles({
   },
   textField: {
     width: '500px',
+    color: 'white',
+    borderColor: 'white',
   },
 });
 

@@ -47,7 +47,7 @@ const FieldArray: React.FC = () => {
                     as={
                       <Select>
                         <MenuItem value='text'>text</MenuItem>
-                        <MenuItem value='check'>check</MenuItem>
+                        <MenuItem value='checkbox'>checkbox</MenuItem>
                         <MenuItem value='radio'>radio</MenuItem>
                       </Select>
                     }

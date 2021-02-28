@@ -51,6 +51,7 @@ const Create = () => {
                   error={Boolean(methods.errors.title)}
                   helperText={methods.errors.title && methods.errors.title.message}
                   className={classes.textField}
+                  inputProps={{ className: classes.textField }}
                 />
               </Grid>
               <Grid item>
@@ -62,6 +63,7 @@ const Create = () => {
                   error={Boolean(methods.errors.description)}
                   helperText={methods.errors.description && methods.errors.description.message}
                   className={classes.textField}
+                  inputProps={{ className: classes.textField }}
                 />
               </Grid>
               <Grid item>
@@ -73,6 +75,7 @@ const Create = () => {
                   error={Boolean(methods.errors.owner)}
                   helperText={methods.errors.owner && methods.errors.owner.message}
                   className={classes.textField}
+                  inputProps={{ className: classes.textField }}
                 />
               </Grid>
               <Grid item>
@@ -84,6 +87,7 @@ const Create = () => {
                   error={Boolean(methods.errors.delete_pass)}
                   helperText={methods.errors.delete_pass && methods.errors.delete_pass.message}
                   className={classes.textField}
+                  inputProps={{ className: classes.textField }}
                 />
               </Grid>
               <Grid item>
@@ -95,6 +99,7 @@ const Create = () => {
                   inputRef={methods.register({ required: 'This field is required' })}
                   error={Boolean(methods.errors.from)}
                   helperText={methods.errors.from && methods.errors.from.message}
+                  inputProps={{ className: classes.textField }}
                 />
                 <TextField
                   label='to'
@@ -104,6 +109,7 @@ const Create = () => {
                   inputRef={methods.register({ required: 'This field is required' })}
                   error={Boolean(methods.errors.to)}
                   helperText={methods.errors.to && methods.errors.to.message}
+                  inputProps={{ className: classes.textField }}
                 />
               </Grid>
 
