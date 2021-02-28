@@ -9,18 +9,21 @@ import SurveyCard from '../../components/SurveyCard';
 const Index = () => {
   const classes = useStyles();
   const [surveys, setSurveys] = useState<Surveys>([]);
+  const [pageNum, setPageNum] = useState(1);
+  const [lastPage, setLastPage] = useState(1);
 
   const fetchSurveys = async () => {
-    const url = 'http://127.0.0.1/api/survey';
+    const url = `http://127.0.0.1/api/survey?page=${pageNum}`;
     const response = await axios.get(url);
     const newSurveys = response.data;
     setSurveys(newSurveys.data);
+    setLastPage(newSurveys.last_page);
     console.log(newSurveys);
   };
 
   useEffect(() => {
     fetchSurveys();
-  }, []);
+  }, [pageNum]);
 
   return (
     <div style={{ padding: '100px' }}>
@@ -38,7 +41,15 @@ const Index = () => {
         <Box display='flex' justifyContent='center'>
           <Paper className={classes.glass}>
             <Box p={3}>
-              <Pagination showFirstButton showLastButton count={10} size='large' variant='outlined' color='primary' />
+              <Pagination
+                showFirstButton
+                showLastButton
+                count={lastPage}
+                size='large'
+                variant='outlined'
+                color='primary'
+                onChange={(e, page) => setPageNum(page)}
+              />
             </Box>
           </Paper>
         </Box>
