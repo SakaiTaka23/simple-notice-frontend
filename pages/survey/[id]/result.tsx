@@ -1,4 +1,4 @@
-import { Paper, Typography } from '@material-ui/core';
+import { Box, Grid, Paper, Typography } from '@material-ui/core';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
@@ -40,14 +40,18 @@ const Result = () => {
   }
 
   return (
-    <>
-      <Paper className={classes.glass}>
-        <Typography variant='h3'>{resultData.title}</Typography>
-        <Typography variant='h4'>{resultData.description}</Typography>
-        <Typography variant='h5'>{resultData.owner}</Typography>
-      </Paper>
-      <Results key='1' questions={questions} />
-    </>
+    <div style={{ padding: 70 }}>
+      <Grid container direction='column' justify='center' spacing={6}>
+        <Box py={3}>
+          <Paper className={classes.glass}>
+            <Typography variant='h3'>{resultData.title}</Typography>
+            <Typography variant='h4'>{resultData.description}</Typography>
+            <Typography variant='h5'>{resultData.owner}</Typography>
+          </Paper>
+        </Box>
+        <Results key='1' questions={questions} />
+      </Grid>
+    </div>
   );
 };
 

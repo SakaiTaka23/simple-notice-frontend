@@ -46,9 +46,9 @@ const Results: FC<Prop> = ({ questions }) => {
             <Box py={2} key={index}>
               <Paper className={classes.glass}>
                 <Typography variant='h5'>{question.title}</Typography>
-                {question.label.map((answer) => {
+                {question.label.map((answer, index) => {
                   return (
-                    <Typography key={answer} variant='subtitle1'>
+                    <Typography key={index} variant='subtitle1'>
                       {answer}
                     </Typography>
                   );

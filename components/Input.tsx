@@ -30,8 +30,8 @@ const Input: FC<Prop> = ({ question }) => {
       <Grid container direction='column'>
         {question.choices.map((choice, index) => {
           return (
-            <Grid item>
-              <FormControl key={index}>
+            <Grid item key={index}>
+              <FormControl>
                 <FormControlLabel
                   control={
                     <Checkbox

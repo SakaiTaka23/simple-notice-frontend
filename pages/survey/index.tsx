@@ -38,9 +38,9 @@ const Index = () => {
         {surveys.map((survey, index) => {
           return <SurveyCard key={index} survey={survey} />;
         })}
-        <Box display='flex' justifyContent='center'>
+        <Box display='flex' justifyContent='center' pt={3}>
           <Paper className={classes.glass}>
-            <Box p={3}>
+            <Box m={5}>
               <Pagination
                 showFirstButton
                 showLastButton

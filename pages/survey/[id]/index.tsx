@@ -48,7 +48,7 @@ const Form: FC = () => {
             <Typography variant='h4'>{description}</Typography>
             <br />
             <hr />
-            <Questions key='1' id={id} questions={questions} />
+            <Questions id={id} questions={questions} />
           </Box>
         </Paper>
       </Grid>
