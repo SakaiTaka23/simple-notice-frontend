@@ -6,14 +6,14 @@ import Pagination from '@material-ui/lab/Pagination';
 import { useStyles } from '../../theme/Theme';
 import SurveyCard from '../../components/SurveyCard';
 
-const Index = () => {
+const Past = () => {
   const classes = useStyles();
   const [surveys, setSurveys] = useState<Surveys>([]);
   const [pageNum, setPageNum] = useState(1);
   const [lastPage, setLastPage] = useState(1);
 
   const fetchSurveys = async () => {
-    const url = `http://127.0.0.1/api/surveys?page=${pageNum}`;
+    const url = `http://127.0.0.1/api/surveys/past?page=${pageNum}`;
     const response = await axios.get(url);
     const newSurveys = response.data;
     setSurveys(newSurveys.data);
@@ -61,4 +61,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Past;
