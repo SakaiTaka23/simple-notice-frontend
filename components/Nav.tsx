@@ -17,7 +17,21 @@ const Nav = () => {
           <Grid item>
             <Link href='/survey'>
               <a>
-                <Typography variant='h6'>Answer</Typography>
+                <Typography variant='h6'>Available</Typography>
+              </a>
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link href='/survey/future'>
+              <a>
+                <Typography variant='h6'>Coming</Typography>
+              </a>
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link href='/survey/past'>
+              <a>
+                <Typography variant='h6'>Ended</Typography>
               </a>
             </Link>
           </Grid>

@@ -31,7 +31,7 @@ const Future = () => {
         <Box pb={3}>
           <Paper className={classes.glass}>
             <Box display='flex' justifyContent='center' p={3}>
-              <Typography variant='h3'>Available Questions</Typography>
+              <Typography variant='h3'>Coming Soon</Typography>
             </Box>
           </Paper>
         </Box>
