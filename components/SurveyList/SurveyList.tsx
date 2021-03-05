@@ -5,13 +5,15 @@ import { Box, Grid, Paper, Typography } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
 import { useStyles } from '../../theme/Theme';
 import SurveyCard from './SurveyCard';
+import { surveyStatus } from '../../type/surveyStatusType';
 
 type Prop = {
   url: string;
   title: string;
+  status: surveyStatus;
 };
 
-const SurveyList: FC<Prop> = ({ url, title }) => {
+const SurveyList: FC<Prop> = ({ url, title, status }) => {
   const classes = useStyles();
   const [surveys, setSurveys] = useState<Surveys>([]);
   const [pageNum, setPageNum] = useState(1);
@@ -41,7 +43,7 @@ const SurveyList: FC<Prop> = ({ url, title }) => {
           </Paper>
         </Box>
         {surveys.map((survey, index) => {
-          return <SurveyCard key={index} survey={survey} />;
+          return <SurveyCard key={index} survey={survey} status={status} />;
         })}
         <Box display='flex' justifyContent='center' pt={3}>
           <Paper className={classes.glass}>
