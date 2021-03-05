@@ -1,8 +1,8 @@
 import { Box, Paper, Typography } from '@material-ui/core';
 import Link from 'next/link';
 import React, { FC } from 'react';
-import { useStyles } from '../theme/Theme';
-import { Survey } from '../type/api/surveyTypes';
+import { useStyles } from '../../theme/Theme';
+import { Survey } from '../../type/api/surveyTypes';
 
 type Prop = {
   survey: Survey;
