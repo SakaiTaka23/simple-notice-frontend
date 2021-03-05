@@ -8,14 +8,14 @@ const Nav = () => {
       <Toolbar>
         <Grid container direction='row' spacing={10}>
           <Grid item xs={3}>
-            <Link href='/'>
+            <Link href='/survey'>
               <a>
                 <Typography variant='h6'>Simple Notice</Typography>
               </a>
             </Link>
           </Grid>
           <Grid item>
-            <Link href='/survey'>
+            <Link href='/survey/now'>
               <a>
                 <Typography variant='h6'>Available</Typography>
               </a>
