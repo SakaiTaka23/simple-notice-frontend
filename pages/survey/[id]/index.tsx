@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { question } from '../../../type/formType';
-import Questions from '../../../components/Questions';
+import Questions from '../../../components/SurveyAnswer/Questions';
 import { Box, Grid, Paper, Typography } from '@material-ui/core';
 import { useStyles } from '../../../theme/Theme';
 import { GetServerSideProps } from 'next';

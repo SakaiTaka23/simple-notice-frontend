@@ -1,7 +1,7 @@
 import { MuiThemeProvider } from '@material-ui/core';
 import { AppProps } from 'next/app';
 import React from 'react';
-import Nav from '../components/Nav';
+import Nav from '../components/Nav/Nav';
 import '../styles/globals.css';
 import { theme } from '../theme/Theme';
 

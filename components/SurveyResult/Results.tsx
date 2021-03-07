@@ -1,8 +1,8 @@
 import { Box, Paper, Typography } from '@material-ui/core';
 import React, { FC } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
-import { useStyles } from '../theme/Theme';
-import { QuestionResult } from '../type/api/surveyResultTypes';
+import { useStyles } from '../../theme/Theme';
+import { QuestionResult } from '../../type/api/surveyResultTypes';
 
 type Prop = {
   questions: QuestionResult[];

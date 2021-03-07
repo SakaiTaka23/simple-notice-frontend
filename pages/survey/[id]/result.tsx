@@ -1,7 +1,7 @@
 import { Box, Grid, Paper, Typography } from '@material-ui/core';
 import { GetServerSideProps } from 'next';
 import React, { FC } from 'react';
-import Results from '../../../components/Results';
+import Results from '../../../components/SurveyResult/Results';
 import { useStyles } from '../../../theme/Theme';
 import { QuestionResult } from '../../../type/api/surveyResultTypes';
 

@@ -1,8 +1,8 @@
 import { Checkbox, FormControl, FormControlLabel, Grid, Radio, RadioGroup, TextField } from '@material-ui/core';
 import React, { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { useStyles } from '../theme/Theme';
-import { question } from '../type/formType';
+import { useStyles } from '../../theme/Theme';
+import { question } from '../../type/formType';
 
 type Prop = {
   question: question;

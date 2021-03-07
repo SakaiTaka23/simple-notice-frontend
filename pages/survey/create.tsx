@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import FieldArray from '../../components/CreateSurvey/FieldArray';
+import FieldArray from '../../components/SurveyCreate/FieldArray';
 import { useStyles } from '../../theme/Theme';
 import { createSurveyType } from '../../type/createSurveyType';
 

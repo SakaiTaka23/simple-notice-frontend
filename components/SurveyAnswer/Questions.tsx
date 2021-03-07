@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { question } from '../type/formType';
+import { question } from '../../type/formType';
 import Input from './Input';
 
 type Prop = {
