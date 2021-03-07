@@ -1,42 +1,18 @@
-import React, { FC, useEffect, useState } from 'react';
-import axios from 'axios';
-import { useRouter } from 'next/router';
-import { formData } from '../../../type/formType';
+import React, { FC } from 'react';
+import { question } from '../../../type/formType';
 import Questions from '../../../components/Questions';
 import { Box, Grid, Paper, Typography } from '@material-ui/core';
 import { useStyles } from '../../../theme/Theme';
+import { GetServerSideProps } from 'next';
 
-const Form: FC = () => {
+type Props = {
+  title: string;
+  description: string;
+  questions: question[];
+};
+
+const Form: FC<Props> = ({ title, description, questions }) => {
   const classes = useStyles();
-  const [surveyData, setSurveyData] = useState<formData>({
-    id: '1',
-    title: 'title',
-    description: 'desc',
-    questions: [],
-  });
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
-  const id = router.query.id;
-
-  const fetchSurveyData = async () => {
-    const url = `http://127.0.0.1/api/survey/${id}`;
-    const response = await axios.get(url);
-    const newSurveyData = response.data;
-    setSurveyData(newSurveyData[0]);
-  };
-
-  useEffect(() => {
-    if (id) {
-      fetchSurveyData();
-      setLoading(false);
-    }
-  }, [id]);
-
-  const { title, description, questions } = surveyData;
-
-  if (loading || id === undefined) {
-    return <h1>loading</h1>;
-  }
 
   return (
     <div style={{ padding: 70 }}>
@@ -48,12 +24,32 @@ const Form: FC = () => {
             <Typography variant='h4'>{description}</Typography>
             <br />
             <hr />
-            <Questions id={id} questions={questions} />
+            <Questions id='1' questions={questions} />
           </Box>
         </Paper>
       </Grid>
     </div>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const id = context.params?.id as string;
+  const response = await fetch(`http://127.0.0.1/api/survey/${id}`);
+
+  if (response.status === 400) {
+    return { notFound: true };
+  }
+
+  const data = await response.json();
+  const { title, description, questions } = data[0];
+
+  return {
+    props: {
+      title,
+      description,
+      questions,
+    },
+  };
 };
 
 export default Form;
