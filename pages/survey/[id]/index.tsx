@@ -6,12 +6,13 @@ import { useStyles } from '../../../theme/Theme';
 import { GetServerSideProps } from 'next';
 
 type Props = {
+  id: string;
   title: string;
   description: string;
   questions: question[];
 };
 
-const Form: FC<Props> = ({ title, description, questions }) => {
+const Form: FC<Props> = ({ id, title, description, questions }) => {
   const classes = useStyles();
 
   return (
@@ -24,7 +25,7 @@ const Form: FC<Props> = ({ title, description, questions }) => {
             <Typography variant='h4'>{description}</Typography>
             <br />
             <hr />
-            <Questions id='1' questions={questions} />
+            <Questions id={id} questions={questions} />
           </Box>
         </Paper>
       </Grid>
@@ -45,6 +46,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
+      id,
       title,
       description,
       questions,
