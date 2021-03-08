@@ -6,6 +6,7 @@ import Pagination from '@material-ui/lab/Pagination';
 import { useStyles } from '../../theme/Theme';
 import SurveyCard from './SurveyCard';
 import { surveyStatus } from '../../type/surveyStatusType';
+import SurveyCardFuture from './SurveyCardFuture';
 
 type Prop = {
   url: string;
@@ -43,7 +44,11 @@ const SurveyList: FC<Prop> = ({ url, title, status }) => {
           </Paper>
         </Box>
         {surveys.map((survey, index) => {
-          return <SurveyCard key={index} survey={survey} status={status} />;
+          return status === 'future' ? (
+            <SurveyCardFuture key={index} survey={survey} />
+          ) : (
+            <SurveyCard key={index} survey={survey} status={status} />
+          );
         })}
         <Box display='flex' justifyContent='center' pt={3}>
           <Paper className={classes.glass}>

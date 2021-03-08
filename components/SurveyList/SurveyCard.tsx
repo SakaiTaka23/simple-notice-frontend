@@ -1,6 +1,6 @@
-import { Box, Paper, Typography } from '@material-ui/core';
+import { Box, Button, Paper, Typography } from '@material-ui/core';
 import Link from 'next/link';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useStyles } from '../../theme/Theme';
 import { Survey } from '../../type/api/surveyTypes';
 import { surveyStatus } from '../../type/surveyStatusType';
@@ -12,12 +12,11 @@ type Prop = {
 
 const SurveyCard: FC<Prop> = ({ survey, status }) => {
   const classes = useStyles();
+  const [readMore, setReadMore] = useState(false);
 
   let href = '';
   if (status == 'available') {
     href = `/survey/${survey.id}`;
-  } else if (status == 'future') {
-    href = '#';
   } else if (status == 'past') {
     href = `/survey/${survey.id}/result`;
   }
@@ -32,6 +31,9 @@ const SurveyCard: FC<Prop> = ({ survey, status }) => {
               <Typography variant='h5'>{survey.description}</Typography>
             </a>
           </Link>
+          <Button onClick={() => setReadMore(!readMore)}>
+            <Typography variant='subtitle2'>Read More</Typography>
+          </Button>
           <Link href={`/survey/${survey.id}/result`}>
             <a>デバッグ用 : 結果へのリンク</a>
           </Link>
